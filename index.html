@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#190707">
+<meta name="description" content="建党105周年主题互动网页——记忆长廊。循着时间的刻度，回望初心与征程。">
+<title>记忆长廊｜庆祝中国共产党成立105周年</title>
+<style>
+:root{
+  --bg:#100606;--bg2:#1d0909;--red:#8e171b;--red2:#c12b2b;--gold:#d8b36a;
+  --gold2:#f1d99c;--cream:#f5ead4;--muted:#b9a58e;--line:rgba(216,179,106,.25);
+  --serif:"Songti SC","STSong","Noto Serif CJK SC",serif;
+  --sans:system-ui,-apple-system,"Microsoft YaHei",sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{margin:0;background:var(--bg);color:var(--cream);font-family:var(--sans);line-height:1.75;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:5;opacity:.12;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.24'/%3E%3C/svg%3E")}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+.topbar{position:fixed;z-index:20;top:0;left:0;right:0;height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(18px,5vw,76px);background:linear-gradient(180deg,rgba(13,4,4,.92),rgba(13,4,4,.25));border-bottom:1px solid rgba(216,179,106,.12);backdrop-filter:blur(12px)}
+.brand{display:flex;align-items:center;gap:11px;font-family:var(--serif);letter-spacing:.12em;font-size:14px}
+.brand-mark{width:25px;height:25px;border:1px solid var(--gold);border-radius:50%;display:grid;place-items:center;color:var(--gold);font-size:12px}
+.nav{display:flex;gap:25px;color:#d7c4a4;font-size:12px;letter-spacing:.12em}
+.nav a{opacity:.75;transition:.25s}.nav a:hover{opacity:1;color:var(--gold2)}
+.menu-btn{display:none;background:none;border:1px solid var(--line);color:var(--gold);padding:6px 10px;border-radius:3px}
+.hero{min-height:100svh;position:relative;display:grid;place-items:center;text-align:center;overflow:hidden;padding:120px 22px 80px;background:radial-gradient(ellipse at 50% 78%,rgba(142,23,27,.48),transparent 48%),linear-gradient(180deg,#160707 0%,#280909 55%,#100606 100%)}
+.hero:before,.hero:after{content:"";position:absolute;left:50%;transform:translateX(-50%);border:1px solid rgba(216,179,106,.14);border-radius:50%;width:min(90vw,900px);height:min(90vw,900px);bottom:-57%}
+.hero:after{width:min(72vw,700px);height:min(72vw,700px);bottom:-45%;border-color:rgba(216,179,106,.1)}
+.hero-art{position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:center;opacity:.9;pointer-events:none}
+.hero-art img{width:min(100%,1100px);height:min(54vh,520px);object-fit:contain;object-position:center bottom;filter:drop-shadow(0 20px 55px rgba(0,0,0,.55));mask-image:linear-gradient(to bottom,transparent 0%,black 25%,black 88%,transparent 100%)}
+.hero-content{position:relative;z-index:2;max-width:850px;margin-top:-4vh}
+.kicker{font-size:11px;letter-spacing:.42em;color:var(--gold);text-transform:uppercase}
+.hero h1{font-family:var(--serif);font-weight:400;letter-spacing:.18em;font-size:clamp(42px,8vw,94px);line-height:1.2;margin:24px 0 12px;text-shadow:0 8px 40px #000}
+.hero h1 span{display:block;font-size:.34em;letter-spacing:.45em;color:var(--gold2);margin-top:22px}
+.hero-sub{color:#d6c4a8;letter-spacing:.22em;font-family:var(--serif);font-size:clamp(13px,2vw,17px);margin:28px 0 40px}
+.primary-btn{display:inline-flex;align-items:center;gap:15px;border:1px solid var(--gold);padding:12px 27px;color:var(--gold2);letter-spacing:.2em;font-size:12px;background:rgba(78,12,13,.35);transition:.3s}
+.primary-btn:hover{background:var(--gold);color:#210909;box-shadow:0 0 35px rgba(216,179,106,.22)}
+.primary-btn b{font-size:18px;font-weight:400}
+.scroll-hint{position:absolute;bottom:25px;left:50%;transform:translateX(-50%);font-size:10px;letter-spacing:.3em;color:#9e8262}
+.scroll-hint:after{content:"";display:block;width:1px;height:35px;background:linear-gradient(var(--gold),transparent);margin:10px auto 0}
+.section{position:relative;padding:120px clamp(22px,8vw,130px);max-width:1500px;margin:auto}
+.section-head{text-align:center;max-width:720px;margin:0 auto 70px}
+.eyebrow{font-size:10px;letter-spacing:.35em;color:var(--gold);margin-bottom:15px}
+.section h2{font-family:var(--serif);font-weight:400;letter-spacing:.13em;font-size:clamp(28px,4vw,46px);margin:0 0 20px}
+.section-intro{color:var(--muted);font-family:var(--serif);font-size:15px;line-height:2}
+.manifesto{background:linear-gradient(180deg,#100606,#1b0808 50%,#100606);text-align:center}
+.manifesto-quote{max-width:850px;margin:auto;font-family:var(--serif);font-size:clamp(20px,3vw,30px);line-height:2.1;letter-spacing:.08em;color:#ead8b5}
+.manifesto-quote em{font-style:normal;color:var(--gold)}
+.rule{width:48px;height:1px;background:var(--gold);margin:35px auto}
+.timeline-wrap{position:relative;max-width:1000px;margin:auto}
+.timeline-wrap:before{content:"";position:absolute;top:0;bottom:0;left:50%;width:1px;background:linear-gradient(transparent,var(--gold),rgba(216,179,106,.15),var(--gold),transparent)}
+.timeline-item{position:relative;width:50%;padding:0 58px 65px 0}
+.timeline-item:nth-child(even){margin-left:50%;padding:0 0 65px 58px}
+.timeline-dot{position:absolute;right:-6px;top:10px;width:12px;height:12px;border:1px solid var(--gold);background:var(--bg);border-radius:50%;box-shadow:0 0 0 5px rgba(216,179,106,.08)}
+.timeline-item:nth-child(even) .timeline-dot{right:auto;left:-6px}
+.timeline-year{font-family:var(--serif);font-size:34px;color:var(--gold);letter-spacing:.08em;line-height:1.2}
+.timeline-card{margin-top:15px;padding:22px 23px;border:1px solid rgba(216,179,106,.18);background:linear-gradient(135deg,rgba(106,20,21,.23),rgba(25,7,7,.4));transition:.3s}
+.timeline-card:hover{border-color:rgba(216,179,106,.6);transform:translateY(-4px)}
+.timeline-card h3{font-family:var(--serif);font-weight:400;font-size:19px;letter-spacing:.1em;margin:0 0 9px}
+.timeline-card p{font-size:13px;color:var(--muted);margin:0;line-height:1.9}
+.more{display:inline-block;margin-top:15px;color:var(--gold);font-size:11px;letter-spacing:.18em;border-bottom:1px solid var(--line);padding-bottom:3px}
+.gallery{background:linear-gradient(180deg,#100606,#1a0808 50%,#100606)}
+.gallery-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:18px;max-width:1050px;margin:auto}
+.gallery-tile{position:relative;min-height:260px;overflow:hidden;border:1px solid rgba(216,179,106,.18);background:#260c0c}
+.gallery-tile:first-child{grid-row:span 2;min-height:540px}
+.gallery-tile img{width:100%;height:100%;position:absolute;inset:0;object-fit:cover;opacity:.72;transition:transform .8s,opacity .5s}
+.gallery-tile:hover img{transform:scale(1.045);opacity:.92}
+.gallery-tile:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(12,4,4,.9),transparent 70%)}
+.tile-copy{position:absolute;z-index:2;left:25px;right:25px;bottom:23px}
+.tile-copy small{color:var(--gold);letter-spacing:.25em;font-size:10px}
+.tile-copy h3{font-family:var(--serif);font-weight:400;font-size:23px;margin:7px 0 0;letter-spacing:.1em}
+.youth{background:radial-gradient(ellipse at 50% 100%,rgba(117,18,23,.4),transparent 60%),#100606;text-align:center}
+.youth-panel{max-width:850px;margin:auto;padding:55px 30px;border:1px solid var(--line);position:relative;background:linear-gradient(145deg,rgba(92,17,20,.22),rgba(14,5,5,.4))}
+.youth-panel:before,.youth-panel:after{content:"✦";position:absolute;color:var(--gold);font-size:13px;background:var(--bg);padding:0 10px;left:50%;transform:translateX(-50%)}
+.youth-panel:before{top:-10px}.youth-panel:after{bottom:-10px}
+.youth-panel h2{font-size:clamp(30px,5vw,48px)}
+.youth-panel p{color:#d2bea0;font-family:var(--serif);line-height:2.2;max-width:650px;margin:20px auto}
+.final-year{font-family:var(--serif);font-size:clamp(65px,13vw,150px);line-height:1;color:transparent;-webkit-text-stroke:1px rgba(216,179,106,.8);letter-spacing:.05em;margin:25px 0}
+.footer{border-top:1px solid rgba(216,179,106,.15);padding:35px 20px;text-align:center;color:#8e7862;font-size:11px;letter-spacing:.1em;background:#0b0404}
+.footer strong{display:block;color:#c7a66c;font-family:var(--serif);font-size:14px;font-weight:400;margin-bottom:8px}
+.progress{position:fixed;top:0;left:0;height:2px;width:0;background:var(--gold);z-index:30;box-shadow:0 0 8px var(--gold)}
+.modal{position:fixed;inset:0;z-index:50;background:rgba(5,2,2,.82);display:none;place-items:center;padding:20px;backdrop-filter:blur(8px)}
+.modal.open{display:grid}
+.modal-box{max-width:560px;width:100%;background:#1b0808;border:1px solid var(--gold);padding:35px;position:relative;box-shadow:0 25px 90px #000}
+.modal-close{position:absolute;right:15px;top:12px;border:0;background:none;color:var(--gold);font-size:25px;cursor:pointer}
+.modal-box .modal-date{color:var(--gold);letter-spacing:.2em;font-size:12px}
+.modal-box h3{font-family:var(--serif);font-size:27px;font-weight:400;margin:12px 0}
+.modal-box p{color:#c9b89d;line-height:2;font-size:14px}
+@media(max-width:700px){
+ .topbar{height:60px}.nav{display:none;position:absolute;top:60px;left:0;right:0;padding:18px 24px;background:rgba(15,5,5,.97);flex-direction:column;gap:14px;border-bottom:1px solid var(--line)}
+ .nav.show{display:flex}.menu-btn{display:block}.brand{font-size:12px}
+ .hero{min-height:92svh}.hero-art img{height:43vh}.hero-content{margin-top:-7vh}
+ .section{padding:85px 22px}.section-head{margin-bottom:48px}
+ .timeline-wrap:before{left:8px}.timeline-item,.timeline-item:nth-child(even){width:100%;margin-left:0;padding:0 0 42px 38px}
+ .timeline-dot,.timeline-item:nth-child(even) .timeline-dot{left:2px;right:auto}
+ .timeline-year{font-size:29px}.timeline-card{padding:18px}
+ .gallery-grid{grid-template-columns:1fr}.gallery-tile,.gallery-tile:first-child{grid-row:auto;min-height:300px}
+ .gallery-tile:first-child{min-height:390px}.youth-panel{padding:42px 20px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<header class="topbar">
+  <a class="brand" href="#top"><span class="brand-mark">党</span><span>百年征程 · 初心如磐</span></a>
+  <nav class="nav" id="nav">
+    <a href="#preface">序章</a><a href="#timeline">历史刻度</a><a href="#gallery">时代剪影</a><a href="#youth">青春寄语</a>
+  </nav>
+  <button class="menu-btn" id="menuBtn" aria-label="打开导航" aria-expanded="false">目录</button>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="hero-art"><img src="assets/cover.svg" alt="" aria-hidden="true"></div>
+  <div class="hero-content">
+    <div class="kicker">1921 — 2026&nbsp;&nbsp; · &nbsp;&nbsp;105 YEARS</div>
+    <h1>记忆长廊<span>庆祝中国共产党成立105周年</span></h1>
+    <p class="hero-sub">循着时间的刻度，回望初心与征程</p>
+    <a class="primary-btn" href="#preface">开启记忆长廊 <b>→</b></a>
+  </div>
+  <div class="scroll-hint">向下探索</div>
+</section>
+
+<section class="section manifesto" id="preface">
+  <div class="section-head">
+    <div class="eyebrow">THE BEGINNING · 序章</div>
+    <h2>一艘红船，开启时代航程</h2>
+    <div class="rule"></div>
+  </div>
+  <p class="manifesto-quote">时间的长河奔涌向前。<br>回望来时路，是为了更好地理解<br><em>从哪里出发、为何出发、向何处前行。</em></p>
+  <p class="section-intro" style="margin-top:28px">1921年，中国共产党第一次全国代表大会召开，宣告中国共产党正式成立。<br>从此，中国革命的面貌焕然一新。</p>
+</section>
+
+<section class="section" id="timeline">
+  <div class="section-head">
+    <div class="eyebrow">A CENTURY OF STRUGGLE · 历史刻度</div>
+    <h2>在时间中，读懂来路</h2>
+    <p class="section-intro">几个重要的历史坐标，串联起一段波澜壮阔的奋斗历程。点击节点，展开更多内容。</p>
+  </div>
+  <div class="timeline-wrap">
+    <article class="timeline-item">
+      <span class="timeline-dot"></span><div class="timeline-year">1921</div>
+      <div class="timeline-card"><h3>开天辟地 · 党的诞生</h3><p>中国共产党第一次全国代表大会召开，中国共产党正式成立。这是近代中国历史上开天辟地的大事变。</p><button class="more detail-btn" data-key="1921">展开历史注记 ↗</button></div>
+    </article>
+    <article class="timeline-item">
+      <span class="timeline-dot"></span><div class="timeline-year">1935</div>
+      <div class="timeline-card"><h3>历史转折 · 遵义会议</h3><p>遵义会议在极端危急的历史关头，挽救了党、挽救了红军、挽救了中国革命。</p><button class="more detail-btn" data-key="1935">展开历史注记 ↗</button></div>
+    </article>
+    <article class="timeline-item">
+      <span class="timeline-dot"></span><div class="timeline-year">1949</div>
+      <div class="timeline-card"><h3>山河新生 · 新中国成立</h3><p>中华人民共和国成立，开启了中国历史发展的新纪元。</p><button class="more detail-btn" data-key="1949">展开历史注记 ↗</button></div>
+    </article>
+    <article class="timeline-item">
+      <span class="timeline-dot"></span><div class="timeline-year">1978</div>
+      <div class="timeline-card"><h3>改革开放 · 走向新时期</h3><p>党的十一届三中全会作出实行改革开放的历史性决策，中国进入改革开放和社会主义现代化建设新时期。</p><button class="more detail-btn" data-key="1978">展开历史注记 ↗</button></div>
+    </article>
+    <article class="timeline-item">
+      <span class="timeline-dot"></span><div class="timeline-year">2021</div>
+      <div class="timeline-card"><h3>百年华章 · 砥砺再出发</h3><p>中国共产党迎来成立一百周年。百年奋斗历程，留下弥足珍贵的历史经验与精神财富。</p><button class="more detail-btn" data-key="2021">展开历史注记 ↗</button></div>
+    </article>
+    <article class="timeline-item">
+      <span class="timeline-dot"></span><div class="timeline-year">2026</div>
+      <div class="timeline-card"><h3>初心如磐 · 奋进新征程</h3><p>从1921到2026，走过105年。新的时代篇章，等待每一位奋斗者接续书写。</p><button class="more detail-btn" data-key="2026">展开历史注记 ↗</button></div>
+    </article>
+  </div>
+</section>
+
+<section class="section gallery" id="gallery">
+  <div class="section-head">
+    <div class="eyebrow">MOMENTS IN TIME · 时代剪影</div>
+    <h2>历史深处，时代眼前</h2>
+    <p class="section-intro">历史由无数具体的人与事写就。这里可以替换为经核实、具有授权或明确开放许可的历史影像。</p>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-tile"><img src="assets/redboat.jpg" alt="红船"><div class="tile-copy"><small>1921 · 初心启航</small><h3>从这里出发</h3></div></div>
+    <div class="gallery-tile"><img src="assets/light.gif" alt="红事"><div class="tile-copy"><small>奋斗 · 信念</small><h3>在风雨中坚定前行</h3></div></div>
+    <div class="gallery-tile"><img src="assets/railway.jpg" alt="城市天际线主题原创矢量插画"><div class="tile-copy"><small>新时代 · 新图景</small><h3>把答卷写在大地上</h3></div></div>
+  </div>
+</section>
+
+<section class="section youth" id="youth">
+  <div class="youth-panel">
+    <div class="eyebrow">TO THE FUTURE · 青春寄语</div>
+    <h2>历史的下一页，由我们续写</h2>
+    <div class="final-year">105</div>
+    <p>回望，是为了铭记；铭记，是为了更好地出发。<br>愿我们把个人理想融入时代发展，在学习与实践中增长才干，<br>以青春之我，回应时代之问。</p>
+    <div class="rule"></div>
+    <div style="color:var(--gold);letter-spacing:.25em;font-family:var(--serif)">不忘初心 · 砥砺前行</div>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <strong>记忆长廊 · 庆祝中国共产党成立105周年</strong>
+  <span>1921—2026　铭记历史　致敬奋斗　奔赴未来</span>
+  <p style="margin-top:15px">历史资料请以权威公开来源为准，图片来源于网络。</p>
+</footer>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-box">
+    <button class="modal-close" id="modalClose" aria-label="关闭">×</button>
+    <div class="modal-date" id="modalDate"></div><h3 id="modalTitle"></h3><p id="modalText"></p>
+  </div>
+</div>
+<script>
+const notes={
+ "1921":{date:"1921年7月",title:"中国共产党正式成立",text:"中国共产党第一次全国代表大会于1921年召开。大会最后一天转移至浙江嘉兴南湖的一艘游船上举行。党的一大宣告中国共产党正式成立，中国革命从此有了坚强的领导力量。"},
+ "1935":{date:"1935年1月",title:"遵义会议",text:"遵义会议是中国共产党历史上一个生死攸关的转折点。会议事实上确立了毛泽东在党中央和红军的领导地位，在极端危急的历史关头挽救了党、挽救了红军、挽救了中国革命。"},
+ "1949":{date:"1949年10月1日",title:"中华人民共和国成立",text:"中华人民共和国中央人民政府成立。新中国的成立，结束了旧中国半殖民地半封建社会的历史，开启了中国历史发展的新纪元。"},
+ "1978":{date:"1978年12月",title:"党的十一届三中全会",text:"党的十一届三中全会作出把党和国家工作中心转移到经济建设上来、实行改革开放的历史性决策，实现了新中国成立以来党的历史上具有深远意义的伟大转折。"},
+ "2021":{date:"2021年7月1日",title:"庆祝中国共产党成立100周年",text:"中国共产党迎来百年华诞。百年征程波澜壮阔，百年初心历久弥坚。中国共产党团结带领中国人民创造了彪炳史册的历史成就。"},
+ "2026":{date:"2026年",title:"成立105周年",text:"从1921到2026，中国共产党走过105年。纪念历史，不只是回望过去，也意味着从历史中汲取力量，在新的征程上继续奋斗。"}
+};
+const modal=document.getElementById('modal');
+document.querySelectorAll('.detail-btn').forEach(btn=>btn.addEventListener('click',()=>{
+ const n=notes[btn.dataset.key];document.getElementById('modalDate').textContent=n.date;
+ document.getElementById('modalTitle').textContent=n.title;document.getElementById('modalText').textContent=n.text;
+ modal.classList.add('open');document.getElementById('modalClose').focus();
+}));
+function closeModal(){modal.classList.remove('open')}
+document.getElementById('modalClose').addEventListener('click',closeModal);
+modal.addEventListener('click',e=>{if(e.target===modal)closeModal()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+const nav=document.getElementById('nav'),menuBtn=document.getElementById('menuBtn');
+menuBtn.addEventListener('click',()=>{const open=nav.classList.toggle('show');menuBtn.setAttribute('aria-expanded',String(open))});
+nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('show');menuBtn.setAttribute('aria-expanded','false')}));
+window.addEventListener('scroll',()=>{const max=document.documentElement.scrollHeight-innerHeight;document.getElementById('progress').style.width=(max>0?scrollY/max*100:0)+'%'},{passive:true});
+</script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600">
+<defs><linearGradient id="b" x2="0" y2="1"><stop stop-color="#5b1216"/><stop offset="1" stop-color="#160606"/></linearGradient></defs>
+<rect width="900" height="600" fill="url(#b)"/><circle cx="450" cy="240" r="170" fill="none" stroke="#d8b36a" stroke-opacity=".25"/><circle cx="450" cy="240" r="210" fill="none" stroke="#d8b36a" stroke-opacity=".12"/>
+<path d="M0 430 Q180 400 360 435 T900 425 V600 H0Z" fill="#160606"/><path d="M0 475 Q200 450 450 480 T900 470" fill="none" stroke="#d8b36a" stroke-opacity=".4" stroke-width="2"/>
+<g transform="translate(450 335)" stroke="#e0bf78" stroke-width="3"><path d="M-240 25 Q0 75 240 25 L180 105 Q0 135 -180 105Z" fill="#240707"/><path d="M0 20 V-190" fill="none" stroke-width="5"/><path d="M-7 -185 L-7 0 L-160 -18Z" fill="#9d2024"/><path d="M7 -155 L7 0 L150 -5Z" fill="#c02c30"/></g>
+<text x="450" y="555" fill="#e0bf78" font-size="22" text-anchor="middle" letter-spacing="10">初心启航</text></svg>

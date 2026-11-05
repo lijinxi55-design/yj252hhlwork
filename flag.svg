@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500">
+<defs><linearGradient id="g" x2="0" y2="1"><stop stop-color="#5c1115"/><stop offset="1" stop-color="#130505"/></linearGradient></defs>
+<rect width="900" height="500" fill="url(#g)"/><circle cx="650" cy="200" r="115" fill="#d8b36a" opacity=".18"/><path d="M0 370 L900 310 V500 H0Z" fill="#100505"/>
+<path d="M245 110 V410" stroke="#d8b36a" stroke-width="5"/><path d="M250 120 Q430 85 650 145 L650 285 Q430 225 250 270Z" fill="#a91f25" stroke="#e3c17b" stroke-width="3"/>
+<path d="M0 420 Q250 390 500 425 T900 415" stroke="#d8b36a" stroke-opacity=".4" fill="none" stroke-width="2"/>
+<text x="450" y="465" text-anchor="middle" fill="#e0bf78" font-size="20" letter-spacing="8">信念如炬</text></svg>

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500">
+<defs><linearGradient id="s" x2="0" y2="1"><stop stop-color="#3b0d10"/><stop offset="1" stop-color="#100505"/></linearGradient></defs>
+<rect width="900" height="500" fill="url(#s)"/><circle cx="650" cy="155" r="95" fill="#d8b36a" opacity=".22"/>
+<g fill="#170606" stroke="#a86c42" stroke-opacity=".55" stroke-width="2"><path d="M0 300 H95 V500 H0Z"/><path d="M110 250 H205 V500 H110Z"/><path d="M220 190 H305 V500 H220Z"/><path d="M320 280 H420 V500 H320Z"/><path d="M440 145 H530 V500 H440Z"/><path d="M545 230 H650 V500 H545Z"/><path d="M665 270 H760 V500 H665Z"/><path d="M775 205 H900 V500 H775Z"/></g>
+<g fill="#d8b36a" opacity=".65"><path d="M128 270h12v18h-12zM155 270h12v18h-12zM245 215h12v18h-12zM275 215h12v18h-12zM465 170h12v18h-12zM495 170h12v18h-12zM690 295h12v18h-12zM720 295h12v18h-12z"/></g>
+<text x="450" y="465" text-anchor="middle" fill="#e0bf78" font-size="20" letter-spacing="8">时代新篇</text></svg>
